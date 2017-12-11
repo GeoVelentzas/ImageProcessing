@@ -1,0 +1,1 @@
+lab1.m loads the image 'board.tif', converts the image to grayscale and adds 'salt-n-pepper'noise of 15% density. It then uses a median filter of window 5x5 and an adaptive median filter and compares the denoising results with snr and a simple visualization.
