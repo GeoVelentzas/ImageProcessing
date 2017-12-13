@@ -1,10 +1,7 @@
-%Τρεξτε αυτο το script αν θελετε να δειτε τις εικόνες για διαφορες
-%τιμές των παραμετρων για επιβεβαιωση.
 clear all; close all; clc;
 warning off all;
 I = imread('flowers.tif');
 
-% Επιλεξτε παραμετρους εδω
 k_Y = 64;
 k_C = 64;
 q = 0.00001;
@@ -49,7 +46,7 @@ Iz = ycbcr2rgb(iz_YCbCr);
 iq_YCbCr(:,:,1) = iq_Y;
 iq_YCbCr(:,:,2) = iq_Cb;
 iq_YCbCr(:,:,3) = iq_Cr;
-Iq = ycbcr2rgb(iq_YCbCr/255);   %!!!!!!!!!εδω ηταν ολο το bug !!!!!!!!!!
+Iq = ycbcr2rgb(iq_YCbCr/255);   
 
 SNR_Dz = snr(RGB,Iz-RGB);
 SNR_Dq = snr(RGB,Iq-RGB);

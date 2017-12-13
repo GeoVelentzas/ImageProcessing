@@ -1,43 +1,25 @@
 function [SNR_Dz, CR_Dz] = idct_zigzag(Z_Y, Z_Cb, Z_Cr, I)
-% Η συναρτηση αυτη δεχεται ως ορισματα την εικονα Ι και τους βαθυπερατα
-% φιλτραρισμαενους 8x8 πινακες DCT  με τη μεθοδο zigzag και επιστρεφει τον
-% σηματοθορυβικο λογο SNR και το compression rate - CR
-
-% Εδω υπολογιζουμε το συνολικο πληθος των μη μηδενικων στοιχειων των
-% zigzag πινάκων DCT καθως θεωρούμε οτι χρειαζομαστε τοσα σε πληθος
-% bytes για αποθηκευση της εικονας οσα και τα στοιχεια αυτα. Αρα
-% πολλαπλασιαζοντας με 8 θα εχουμε το πληθος των bits
-bits_Iz_Y = size(find(Z_Y),1)*8;                %πληθος μη μηδενικων στοιχειων του Z_Y (*8 -> bits)
-bits_Iz_Cb = size(find(Z_Cb),1)*8;              %πληθος μη μηδενικων στοιχειων του Z_Cb (*8 -> bits)
-bits_Iz_Cr = size(find(Z_Cr),1)*8;              %πληθος μη μηδενικων στοιχειων του Z_Cr (*8 -> bits)
-bits_Iz = bits_Iz_Y + bits_Iz_Cb + bits_Iz_Cr;  %συνολικο πληθος bits για αποθηκευση πληροφοριας 
+bits_Iz_Y = size(find(Z_Y),1)*8;                
+bits_Iz_Cb = size(find(Z_Cb),1)*8;              
+bits_Iz_Cr = size(find(Z_Cr),1)*8;              
+bits_Iz = bits_Iz_Y + bits_Iz_Cb + bits_Iz_Cr;  
 
 
-% Eδω υπολογιζουμε το πληθος των συνολικων bits της αρχικης εικονας
-bits_I_R = size(I,1)*size(I,2)*8;           %πληθος bits στο πρωτο καναλι
-bits_I = 3 * bits_I_R;                      %συνολικα bits αρχικης εικονας
+bits_I_R = size(I,1)*size(I,2)*8;           
+bits_I = 3 * bits_I_R;                      
 
-
-% Aντιστροφος 8x8 blockwise DCT για καθε καναλι
 iz_Y  = abs(blkproc(Z_Y, [8 8],'idct2'));
 iz_Cb = abs(blkproc(Z_Cb,[8 8],'idct2'));
 iz_Cr = abs(blkproc(Z_Cr,[8 8],'idct2'));
 
-% Δημιουργια του 3-D ανακατασκευασμενου πινακα YCbCr
 iz_YCbCr(:,:,1) = iz_Y;
 iz_YCbCr(:,:,2) = iz_Cb;
 iz_YCbCr(:,:,3) = iz_Cr;
 
-% Μετατροπη σε RGB
 Iz = ycbcr2rgb(iz_YCbCr);
 
-
-% ΠΡΟΣΟΧΗ. H SNR σ'αυτο το εργαστηριο δεχεται ως ορισματα εικονα και θορυβο
-% σε αντιθεση με τα προηγουμενα εργαστηρια που δεχοταν εικονα και
-% θορυβοποιημενη εικονα.
 SNR_Dz = snr(I,I-Iz);
 
-% Υπολογισμος του CR βαση του γνωστου τυπου
 CR_Dz = bits_I/bits_Iz;
 
 end

@@ -1,6 +1,5 @@
 function y = zigzag(x,n)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% keep only the n-first elements after zig-zag scanning of x
 
 z =[1  2  6  7  15 16 28 29;
     3  5  8  14 17 27 30 43;
