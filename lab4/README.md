@@ -1,0 +1,2 @@
+## Edge Detection
+Edge detection using combination of Gaussian Derivative and Laplacian of Gaussian. In more detail the image is filtered with DoG and then the absolute values of each pixel is computed. The image is also filtered with LoG, thresholded at zero and the perigram of the resulting binary image is extracted as a new binary image. The element wise product of the two above images is the Edge detection resulting image (also after thresholding).
