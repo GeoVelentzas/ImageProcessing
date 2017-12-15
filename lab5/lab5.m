@@ -1,5 +1,7 @@
 close all;clear all; clc;
 
+addpath(genpath('./'));
+
 I1 = imread('building.jpg');
 I2 = imread('house2.jpg');
 points1 = harris_laplace(I1);
