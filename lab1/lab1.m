@@ -1,5 +1,6 @@
 clear all; close all; clc;
 
+addpath(genpath('./'))
 
 % *********** read original image and add salt&pepper noise ************* %
 I=imread('board.tif');                  %read image
