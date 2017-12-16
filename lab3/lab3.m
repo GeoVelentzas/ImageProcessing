@@ -1,5 +1,7 @@
 close all; clear all; clc;
 
+addpath(genpath('./'));
+
 %��� 2009b ��������� warning ��� � blkproc �� ����������!!
 warning off all; 
 
