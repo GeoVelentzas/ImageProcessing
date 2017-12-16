@@ -1,5 +1,6 @@
 close all; clear all; clc;
 
+addpath(genpath('./'))
 
 I = im2double(imread('house.tif')); 
 
