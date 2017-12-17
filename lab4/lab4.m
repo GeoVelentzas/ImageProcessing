@@ -1,5 +1,7 @@
 close all; clear all; clc;
 
+addpath(genpath('./'))
+
 I = im2double(imread('building.tif'));
 
 [E,Z,M] = gdlog(I,3);
