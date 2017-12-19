@@ -11,6 +11,6 @@ imshow(I); title('Original Image');
 subplot(2,2,2);
 imshow(M,[]); title('Fitlered with DoG');
 subplot(2,2,3);
-imshow(Z,[]); title('Filgered with LoG');
+imshow(Z,[]); title('Filtered with LoG');
 subplot(2,2,4);
 imshow(E,[]); title('Edges');    
